@@ -91,17 +91,20 @@ class InvoicesDetailsController extends Controller
 
     public function showPaidInvoices(){
         $invoices =  Invoices::where('Value_Status',1)->get();
-        return view('invoices.payment_status_invoices',compact('invoices'));
+        $title = 'المدفوعة';
+        return view('invoices.payment_status_invoices',compact('invoices','title'));
     }
 
     public function showUnPaidInvoices(){
         $invoices = Invoices::where('Value_Status',2)->get();
-        return view('invoices.payment_status_invoices',compact('invoices'));
+        $title = 'غير المدفوعة';
+        return view('invoices.payment_status_invoices',compact('invoices','title'));
         
     }
     public function showPartialPaidInvoices(){
         $invoices = Invoices::where('Value_Status',3)->get();
-        return view('invoices.payment_status_invoices',compact('invoices'));
+        $title = 'المدفوعة جزئياً';
+        return view('invoices.payment_status_invoices',compact('invoices','title'));
         
     }
 }
